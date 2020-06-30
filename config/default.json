@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://paulopiyo777:paulopiyo777@noob-master-p9bta.mongodb.net/<dbname>?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://paulopiyo777:paulopiyo777@noob-master-p9bta.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "noobmaster"
 }

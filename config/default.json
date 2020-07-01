@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://paulopiyo777:paulopiyo777@noob-master-p9bta.mongodb.net/<dbname>?retryWrites=true&w=majority",
-  "jwtSecret": "noobmaster"
+  "jwtSecret": "noobmaster",
+  "githubClientId": "7d9ca7fc97c417b083a9",
+  "githubSecret": "c90142774fda5dcfc068fa622eb5c8b9d28cf9e5"
 }

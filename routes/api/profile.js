@@ -139,4 +139,76 @@ router.get("/user/:user_id", async (req, res) => {
   }
 });
 
+// @route: DELETE api/profile
+// @description: Delete profile, user & posts
+// @access: Private
+router.delete("/", auth, async (req, res) => {
+  try {
+    // remove user's posts
+    // remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+
+    // remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+
+    res.json({ msg: "User removed" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route: PUT api/profile/experience
+// @description: Add profile experience
+// @access: Private
+router.put(
+  "/experience",
+  [
+    auth,
+    [
+      check("title", "Title is required").not().isEmpty(),
+      check("company", "Company is required").not().isEmpty(),
+      check("from", "From date is required").not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description,
+    } = req.body;
+
+    const newExp = {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description,
+    };
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.experience.unshift(newExp);
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.err(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
 module.exports = router;

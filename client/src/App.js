@@ -10,7 +10,6 @@ import Dashboard from "./components/layout/dashboard/Dashboard";
 import { Provider } from "react-redux";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
-
 import "./App.css";
 import { loadUser } from "./actions/auth";
 

@@ -7,7 +7,7 @@ import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/layout/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
-// Redux components
+// redux
 import { Provider } from "react-redux";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
